@@ -16,9 +16,9 @@ namespace UnityChan
 
     public class UnityChanControlScriptWithRgidBody : MonoBehaviour
     {
-        public Camera mainCamera;
-        public Camera traceCamera;
-        public Camera overheadViewCamera;
+        public GameObject mainCamera;
+        public GameObject traceCamera;
+        public GameObject overheadViewCamera;
 
         public float animSpeed = 1.5f;              // アニメーション再生速度設定
         public float lookSmoother = 3.0f;           // a smoothing setting for camera motion
@@ -73,9 +73,12 @@ namespace UnityChan
         // 初期化
         void Start()
         {
-            mainCamera.enabled = true;
-            traceCamera.enabled = false;
-            overheadViewCamera.enabled = false;
+            //mainCamera.enabled = true;
+            //traceCamera.enabled = false;
+            //overheadViewCamera.enabled = false;
+            mainCamera.SetActive(true);
+            traceCamera.SetActive(false);
+            overheadViewCamera.SetActive(false);
             // Animatorコンポーネントを取得する
             anim = GetComponent<Animator>();
             // CapsuleColliderコンポーネントを取得する（カプセル型コリジョン）
@@ -278,19 +281,28 @@ namespace UnityChan
             buttonStyle.fontSize = 30;
             if (GUI.Button(new Rect(Screen.width - 400, 50, 380, 80), "ユニティちゃんの後ろ視点", buttonStyle))
             {
-                mainCamera.enabled = true;
-                traceCamera.enabled = false;
-                overheadViewCamera.enabled = false;
+                //mainCamera.enabled = true;
+                //traceCamera.enabled = false;
+                //overheadViewCamera.enabled = false;
+                mainCamera.SetActive(true);
+                traceCamera.SetActive(false);
+                overheadViewCamera.SetActive(false);
             }
             if (GUI.Button(new Rect(Screen.width - 400, 150, 380, 80), "ユニティちゃん視点", buttonStyle)) {
-                mainCamera.enabled = false;
-                traceCamera.enabled = true;
-                overheadViewCamera.enabled = false;
+                //mainCamera.enabled = false;
+                //traceCamera.enabled = true;
+                //overheadViewCamera.enabled = false;
+                mainCamera.SetActive(false);
+                traceCamera.SetActive(true);
+                overheadViewCamera.SetActive(false);
             }
             if (GUI.Button(new Rect(Screen.width - 400, 250, 380, 80), "真上視点", buttonStyle)) {
-                mainCamera.enabled = false;
-                traceCamera.enabled = false;
-                overheadViewCamera.enabled = true;
+                //mainCamera.enabled = false;
+                //traceCamera.enabled = false;
+                //overheadViewCamera.enabled = true;
+                mainCamera.SetActive(false);
+                traceCamera.SetActive(false);
+                overheadViewCamera.SetActive(true);
             }
 		}
 
